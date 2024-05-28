@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="./index.html">Inicio</a>
+                <a class="nav-link" href="index.html">Inicio</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./templates/product.html">Productos</a>
@@ -47,7 +47,7 @@
 <div class="jumbotron jumbotron-fluid text-center bg-dark text-white">
     <div class="container">
         <h1 class="display-4">Bienvenido a Elite Market</h1>
-        <p class="lead">Las mejores ofertas en ropa, electrodomésticos, electrónicos y más.</p>
+        <p class="lead">Las mejores ofertas en electrodomésticos, electrónicos y más.</p>
         <a href="./templates/product.html" class="btn btn-primary btn-lg">Comprar Ahora</a>
     </div>
 </div>
@@ -55,67 +55,145 @@
 <!-- Featured Products Section -->
 <div class="container mt-5">
     <h2 class="text-center">Productos Destacados</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="images/play.jpg" class="card-img-top" alt="Producto 1">
-                <div class="card-body">
-                    <h5 class="card-title">Producto 1</h5>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <p class="card-text">$100.00</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+    <div id="featuredProductsCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="./images/tv.jpg" class="card-img-top" alt="Producto 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Producto 1</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="card-text">$100.00</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-primary">Agregar al Carrito</a>
+                                <a href="#" class="btn btn-outline-secondary"><i class="fas fa-heart"></i> Wishlist</a>
+                            </div>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-primary">Agregar al Carrito</a>
-                    <a href="#" class="btn btn-outline-secondary"><i class="fas fa-heart"></i> Wishlist</a>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="./images/play.jpg" class="card-img-top" alt="Producto 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Producto 2</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="card-text">$200.00</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-primary">Agregar al Carrito</a>
+                                <a href="#" class="btn btn-outline-secondary"><i class="fas fa-heart"></i> Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="./images/mac.jpg" class="card-img-top" alt="Producto 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Producto 3</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="card-text">$300.00</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-primary">Agregar al Carrito</a>
+                                <a href="#" class="btn btn-outline-secondary"><i class="fas fa-heart"></i> Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="./images/phone.jpg" class="card-img-top" alt="Producto 4">
+                            <div class="card-body">
+                                <h5 class="card-title">Producto 4</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="card-text">$400.00</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-primary">Agregar al Carrito</a>
+                                <a href="#" class="btn btn-outline-secondary"><i class="fas fa-heart"></i> Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="./images/earphones.jpg" class="card-img-top" alt="Producto 5">
+                            <div class="card-body">
+                                <h5 class="card-title">Producto 5</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="card-text">$500.00</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-primary">Agregar al Carrito</a>
+                                <a href="#" class="btn btn-outline-secondary"><i class="fas fa-heart"></i> Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="./images/watch.jpg" class="card-img-top" alt="Producto 6">
+                            <div class="card-body">
+                                <h5 class="card-title">Producto 6</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="card-text">$600.00</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-primary">Agregar al Carrito</a>
+                                <a href="#" class="btn btn-outline-secondary"><i class="fas fa-heart"></i> Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="./images/tv.jpg" class="card-img-top" alt="Producto 2">
-                <div class="card-body">
-                    <h5 class="card-title">Producto 2</h5>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <p class="card-text">$200.00</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-primary">Agregar al Carrito</a>
-                    <a href="#" class="btn btn-outline-secondary"><i class="fas fa-heart"></i> Wishlist</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="./images/mac.jpg" class="card-img-top" alt="Producto 3">
-                <div class="card-body">
-                    <h5 class="card-title">Producto 3</h5>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <p class="card-text">$300.00</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-primary">Agregar al Carrito</a>
-                    <a href="#" class="btn btn-outline-secondary"><i class="fas fa-heart"></i> Wishlist</a>
-                </div>
-            </div>
-        </div>
+        <a class="carousel-control-prev" href="#featuredProductsCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#featuredProductsCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
     </div>
 </div>
 
@@ -126,7 +204,8 @@
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
