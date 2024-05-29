@@ -3,70 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Market - Iniciar Sesión</title>
+    <title>Elite Market - Inicio de Sesión</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <script src="../js/scripts.js" defer></script>
 </head>
 <body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-custom">
-    <a class="navbar-brand" href="index.html">
-        <img src="img/logo.png" width="40" height="40" alt="Elite Market"> Elite Market
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="product.html">Productos</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="account.html"><i class="fas fa-user"></i> Mi cuenta</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito</a>
-            </li>
-        </ul>
-        <form class="form-inline ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-        </form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>Inicio de Sesión</h3>
+                </div>
+                <div class="card-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                        <div class="text-center mt-3">
+                            <a href="recover_password.html">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="register.html">Crear una cuenta nueva</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</nav>
-
-<!-- Main Content -->
-<div class="main-content container mt-5">
-    <h2>Iniciar Sesión</h2>
-    <form>
-        <div class="form-group">
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" class="form-control" id="email" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="password" class="form-control" id="password" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-        <p class="mt-3">¿No tienes una cuenta? <a href="register.html">Regístrate</a></p>
-        <p class="mt-1"><a href="recover_password.html">Recuperar Contraseña</a></p>
-    </form>
 </div>
 
-<!-- Footer -->
-<footer class="footer-custom mt-5">
-    <div class="container">
-        <p class="text-center">&copy; 2024 Elite Market. Todos los derechos reservados.</p>
-    </div>
-</footer>
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.com/bootstrap/4.
+        const roles = {
+            admin: ["admin@example.com"],
+            user: ["user@example.com"]
+        };
+
+        const email = document.getElementById("email").value;
+
+        if (roles.admin.includes(email)) {
+            window.location.href = "admin.html";
+        } else if (roles.user.includes(email)) {
+            window.location.href = "profile.html";
+        } else {
+            alert("Correo electrónico no reconocido.");
+        }
+    });
+</script>
+</body>
+</html>
