@@ -127,7 +127,7 @@ body {
 
 .product-card .card-price {
     font-size: 1.5em;
-    color: #d9534f; /* Rojo */
+    color: #d9534f;
 }
 
 .product-card .rating {
@@ -247,4 +247,70 @@ ul.list-unstyled li i {
     width: 100%;
     position: relative;
     bottom: 0;
+}
+
+
+.menu-container {
+    position: relative;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    background-color: #00D879;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.menu-button i {
+    margin-right: 10px;
+}
+
+.menu-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 10px 10px;
+    display: none;
+    flex-direction: column;
+    width: 250px;
+    z-index: 1000;
+}
+
+.menu-dropdown a {
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.menu-dropdown a:hover {
+    background-color: #f4f4f9;
+}
+
+.menu-container:hover .menu-dropdown {
+    display: flex;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    background-color: #00D879;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    outline: none;
+    box-shadow: none;
+}
+
+.menu-button:focus {
+    outline: none;
+    box-shadow: none;
 }
