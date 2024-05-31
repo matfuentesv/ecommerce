@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Market - Carrito</title>
+    <title>Elite Market - Inicio</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
@@ -12,8 +13,8 @@
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-custom">
-    <a class="navbar-brand" href="index.html">
-        <img src="img/logo.png" width="40" height="40" alt="Elite Market"> Elite Market
+    <a class="navbar-brand" href="../index.html">
+        <img src="../images/elite-logo.jpg" alt="Elite Market"> Elite Market
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,18 +28,28 @@
                 <a class="nav-link" href="../templates/product.html">Productos</a>
             </li>
         </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="../templates/profile.html"><i class="fas fa-user"></i> Mi cuenta</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../templates/cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito</a>
-            </li>
-        </ul>
-        <form class="form-inline ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+        <form class="form-inline mx-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar en Elite Market" aria-label="Buscar">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </form>
+        <div class="user-options">
+            <a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal" id="login-link"><i class="fas fa-user"></i> Hola, Inicia sesión</a>
+            <div class="dropdown d-none" id="user-menu">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i> Hola, <span id="userName">Usuario</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="profile.html">Mi cuenta</a>
+                    <a class="dropdown-item" href="#">Mis CMR Puntos</a>
+                    <a class="dropdown-item" href="cart.html">Mis compras</a>
+                    <a class="dropdown-item" href="#">Mis Gift Cards</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" id="logout">Cerrar sesión</a>
+                </div>
+            </div>
+            <a href="#" class="nav-link"><i class="fas fa-heart"></i></a>
+            <a href="./templates/cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Mis compras</a>
+        </div>
     </div>
 </nav>
 
@@ -73,10 +84,38 @@
     </div>
 </div>
 
-<!-- Footer -->
 <footer class="footer-custom mt-5">
     <div class="container">
-        <p class="text-center">&copy; 2024 Elite Market. Todos los derechos reservados.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Enlaces útiles</h5>
+                <ul class="list-unstyled">
+                    <li><a class="text-white" href="#">Política de privacidad</a></li>
+                    <li><a class="text-white" href="#">Términos y condiciones</a></li>
+                    <li><a class="text-white" href="#">Sobre nosotros</a></li>
+                    <li><a class="text-white" href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Síguenos</h5>
+                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+            </div>
+            <div class="col-md-4">
+                <h5>Suscríbete</h5>
+                <p>Recibe nuestras últimas noticias y ofertas.</p>
+                <form>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Correo electrónico">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Suscribirse</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <p class="mt-4">&copy; 2024 Elite Market. Todos los derechos reservados.</p>
     </div>
 </footer>
 

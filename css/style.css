@@ -17,7 +17,7 @@ body {
 }
 
 .navbar-custom {
-    background-color: #343a40; /* Gris Oscuro */
+    background-color: #00D879;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
 }
@@ -41,11 +41,11 @@ body {
 }
 
 .navbar-custom .nav-link:hover {
-    color: #ffc107; /* Amarillo */
+    color: whitesmoke;
 }
 
 .navbar-toggler {
-    border-color: white;
+    border-color: #bbb6b6;
 }
 
 .navbar-toggler-icon {
@@ -78,8 +78,8 @@ body {
 }
 
 .footer-custom {
-    background-color: #343a40; /* Gris Oscuro */
-    color: white;
+    background-color: #00D879;
+    color: white !important;
     padding: 20px 0;
     text-align: center;
     margin-top: auto;
@@ -234,12 +234,12 @@ ul.list-unstyled li {
 ul.list-unstyled li i {
     font-size: 1.5rem;
     margin-right: 1rem;
-    color: #ffc107; /* Amarillo */
+    color: #007bff;
 }
 
 .footer-custom {
-    background-color: #343a40; /* Gris Oscuro */
-    color: white;
+    background-color: #00D879;
+    color: white !important;
     padding: 20px 0;
     text-align: center;
     margin-top: auto;
