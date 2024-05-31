@@ -314,3 +314,11 @@ ul.list-unstyled li i {
     outline: none;
     box-shadow: none;
 }
+.toast.bg-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.toast .close {
+    color: white;
+}

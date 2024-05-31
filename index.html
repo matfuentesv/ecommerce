@@ -20,6 +20,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item menu-container">
+                <button class="menu-button">
+                    <i class="fas fa-bars"></i> Menú
+                </button>
+                <div class="menu-dropdown">
+                    <a href="#">Tecnología</a>
+                    <a href="#">Celulares y planes</a>
+                    <a href="#">Electrohogar</a>
+                    <a href="#" id="admin-menu-option" class="d-none">Administración</a>
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="index.html">Inicio</a>
             </li>
@@ -51,6 +62,18 @@
         </div>
     </div>
 </nav>
+
+<!-- Contenedor para las alertas de toast -->
+<div aria-live="polite" aria-atomic="true" class="position-fixed" style="bottom: 1rem; left: 1rem; z-index: 1055;">
+    <div id="login-toast" class="toast bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+        <div class="toast-body">
+            Correo electrónico o contraseña incorrectos.
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>
 
 <div class="jumbotron jumbotron-fluid text-center bg-info text-white">
     <div class="container">
@@ -212,7 +235,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="loginModalLabel">Inicia sesión para comprar</h5>
-                <button type="button" class="close" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
