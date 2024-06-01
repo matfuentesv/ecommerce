@@ -32,12 +32,27 @@ function findUser(email, password) {
     return users.find(user => user.email === email && user.password === password);
 }
 
-function showToast(message) {
-    const toast = document.getElementById('login-toast');
-    const toastBody = toast.querySelector('.toast-body');
-    toastBody.childNodes[0].nodeValue = message;  // Update message text
-    const bsToast = new bootstrap.Toast(toast);
-    bsToast.show();
+function showToast(message,status) {
+    const toastContainer = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'toast show  text-white '.concat(status);
+    toast.role = 'alert';
+    toast.ariaLive = 'assertive';
+    toast.ariaAtomic = 'true';
+    toast.innerHTML = `
+        <div class="toast-body">
+            ${message}
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    `;
+    toastContainer.appendChild(toast);
+    setTimeout(() => {
+        toast.classList.remove('show');
+        toast.classList.add('hide');
+        setTimeout(() => toast.remove(), 500); // Remove after transition
+    }, 3000);
 }
 
 function addAdminMenuOption() {
@@ -54,17 +69,28 @@ function removeAdminMenuOption() {
     }
 }
 
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
+
 function login() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+
+    if (!validateEmail(email)) {
+        showToast("Por favor, introduce una dirección de correo electrónico válida.","bg-danger");
+        return;
+    }
 
     const user = findUser(email, password);
 
     if (user) {
         // Ocultar modal de inicio de sesión
-        $('#loginModal').modal('hide');
+        const loginModal = document.getElementById('loginModal');
+        loginModal.style.display = 'none';
         document.body.classList.remove('modal-open');
-        let backdrops = document.getElementsByClassName('modal-backdrop');
+        const backdrops = document.getElementsByClassName('modal-backdrop');
         while (backdrops.length > 0) {
             backdrops[0].parentNode.removeChild(backdrops[0]);
         }
@@ -75,7 +101,7 @@ function login() {
         // Actualizar navbar para mostrar el nombre del usuario y el submenú
         document.getElementById("login-link").classList.add("d-none");
         document.getElementById("user-menu").classList.remove("d-none");
-        document.getElementById("userName").innerText = `Hola, ${user.nombre}`;
+        document.getElementById("userName").innerText = user.nombre;
 
         // Agregar opción "Administración" al menú si el usuario es admin
         if (user.roles.includes("admin")) {
@@ -83,7 +109,7 @@ function login() {
         }
     } else {
         // Mostrar toast
-        showToast("Correo electrónico o contraseña incorrectos.");
+        showToast("Correo electrónico o contraseña incorrectos.","bg-danger");
     }
 }
 
@@ -104,7 +130,9 @@ function logout() {
     removeAdminMenuOption();
 
     // Mostrar modal de inicio de sesión
-    $('#loginModal').modal('show');
+    const loginModal = document.getElementById('loginModal');
+    loginModal.style.display = 'block';
+    document.body.classList.add('modal-open');
 }
 
 function checkLoginStatus() {
@@ -113,7 +141,7 @@ function checkLoginStatus() {
         // Actualizar navbar para mostrar el nombre del usuario y el submenú
         document.getElementById("login-link").classList.add("d-none");
         document.getElementById("user-menu").classList.remove("d-none");
-        document.getElementById("userName").innerText = `Hola, ${user.nombre}`;
+        document.getElementById("userName").innerText = user.nombre;
 
         // Agregar opción "Administración" al menú si el usuario es admin
         if (user.roles.includes("admin")) {
@@ -127,6 +155,27 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     event.preventDefault();
     login();
 });
+
+// Añadir event listener al botón de cierre del modal
+document.querySelector('#loginModal .close').addEventListener('click', function() {
+    const loginModal = document.getElementById('loginModal');
+    loginModal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+    const backdrops = document.getElementsByClassName('modal-backdrop');
+    while (backdrops.length > 0) {
+        backdrops[0].parentNode.removeChild(backdrops[0]);
+    }
+});
+
+function recoverPass(){
+    const email = document.getElementById("email-recover").value;
+
+    if (!validateEmail(email)) {
+        showToast("Por favor, introduce una dirección de correo electrónico válida.","bg-danger");
+    }else {
+        showToast("Correo enviado con exito,favor validar","bg-info");
+    }
+}
 
 // Verificar el estado de inicio de sesión al cargar la página
 document.addEventListener('DOMContentLoaded', checkLoginStatus);

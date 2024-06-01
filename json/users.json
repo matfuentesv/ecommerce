@@ -1,0 +1,29 @@
+[
+  {
+    "email": "mfuentes@gmail.com",
+    "password": "admin123",
+    "nombre": "Matias",
+    "apellido": "Fuentes",
+    "edad": 28,
+    "direccion": "Los naranjos 0228",
+    "roles": ["admin"]
+  },
+  {
+    "email": "frojas@gmail.com",
+    "password": "admin123",
+    "nombre": "Francisca",
+    "apellido": "Rojas",
+    "edad": 28,
+    "direccion": "456 User Ave.",
+    "roles": ["customer"]
+  },
+  {
+    "email": "user2@example.com",
+    "password": "user123",
+    "nombre": "Juan",
+    "apellido": "Perez",
+    "edad": 32,
+    "direccion": "789 User Blvd.",
+    "roles": ["customer"]
+  }
+]
