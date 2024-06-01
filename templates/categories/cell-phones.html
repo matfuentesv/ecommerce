@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Market - Inicio</title>
+    <title>Elite Market - Celulares</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-custom">
-    <a class="navbar-brand" href="index.html">
-        <img src="./images/elite-logo.jpg" alt="Elite Market"> Elite Market
+    <a class="navbar-brand" href="../../index.html">
+        <img src="../../images/elite-logo.jpg" alt="Elite Market"> Elite Market
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,16 +26,15 @@
                 <div class="menu-dropdown">
                     <a href="#">Tecnología</a>
                     <div class="submenu">
-                        <a href="./templates/categories/notebooks.html">Computadoras</a>
-                        <a href="./templates/categories/cell-phones.html">Celulares</a>
+                        <a href="../../templates/categories/notebooks.html">Computadoras</a>
+                        <a href="../../templates/categories/cell-phones.html">Celulares</a>
                     </div>
                     <a href="#">Electrohogar</a>
-
                     <a href="#" id="admin-menu-option" class="d-none">Administración</a>
                 </div>
             </li>
             <li class="nav-item pt-2">
-                <a class="nav-link" href="index.html">Inicio</a>
+                <a class="nav-link" href="../../index.html">Inicio</a>
             </li>
         </ul>
         <form class="form-inline mx-auto">
@@ -57,42 +56,25 @@
                 </div>
             </div>
             <a href="#" class="nav-link"><i class="fas fa-heart"></i></a>
-            <a href="./templates/cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Mis compras</a>
+            <a href="../../templates/cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Mis compras</a>
         </div>
     </div>
 </nav>
 
-<div class="jumbotron jumbotron-fluid text-center bg-info text-white">
-    <div class="container">
-        <h1 class="display-4">Bienvenido a Elite Market</h1>
-        <p class="lead">Las mejores ofertas en electrodomésticos, electrónicos y más.</p>
+<!-- Contenido de Celulares -->
+<div class="main-content container mt-5">
+    <h2>Celulares</h2>
+    <div class="row" id="cellphones-list">
+        <!-- Los productos se insertarán aquí -->
     </div>
 </div>
 
-
-<!--Seccion de los productos -->
-<div class="container mt-5">
-    <h2 class="text-center">Productos Destacados</h2>
-    <div id="featuredProductsCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
-        <div class="carousel-inner" id="carousel-inner"></div>
-        <a class="carousel-control-prev" href="#featuredProductsCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#featuredProductsCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Siguiente</span>
-        </a>
-    </div>
-</div>
-
-<!--Modal de inicio de sesion -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="loginModalLabel">Inicia sesión para comprar</h5>
-                <button type="button" class="close" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -100,26 +82,21 @@
                 <form id="loginForm">
                     <div class="form-group">
                         <label for="email">Correo Electrónico</label>
-                        <input type="text" class="form-control" id="email" required>
+                        <input type="email" class="form-control" id="email" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Contraseña</label>
                         <input type="password" class="form-control" id="password" required>
-                        <a href="./templates/recover_password.html">¿Olvidaste tu contraseña?</a>
+                        <small><a href="../templates/recover_password.html">¿Olvidaste tu contraseña?</a></small>
                     </div>
-                    <button type="button" onclick="login()" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                    <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
                 </form>
                 <div class="text-center mt-3">
-                    <p>¿Aun no tienes cuenta?</p>
-                    <a href="./templates/register.html">Crear una cuenta nueva</a>
+                    <a href="../templates/register.html">Crear una cuenta nueva</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-<div id="toast-container" aria-live="polite" aria-atomic="true" class="position-fixed" style="bottom: 1rem; left: 1rem; z-index: 1055;">
 </div>
 
 <footer class="footer-custom mt-5">
@@ -157,10 +134,9 @@
     </div>
 </footer>
 
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="js/index.js"></script>
+<script src="../../js/index.js"></script>
 </body>
 </html>

@@ -249,7 +249,6 @@ ul.list-unstyled li i {
     bottom: 0;
 }
 
-
 .menu-container {
     position: relative;
 }
@@ -297,23 +296,23 @@ ul.list-unstyled li i {
     display: flex;
 }
 
-.menu-button {
-    display: flex;
-    align-items: center;
-    background-color: #00D879;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2em;
-    outline: none;
-    box-shadow: none;
+.menu-dropdown .submenu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    display: none;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 10px 10px 0;
+    flex-direction: column;
+    width: 200px;
 }
 
-.menu-button:focus {
-    outline: none;
-    box-shadow: none;
+.menu-dropdown a:hover + .submenu,
+.submenu:hover {
+    display: flex;
 }
+
 .toast.bg-danger {
     background-color: #dc3545;
     color: white;
