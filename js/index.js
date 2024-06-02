@@ -174,7 +174,7 @@ const cellPhonesArray = [
         reviews: 40
     },
     {
-        img: '../../images/phones/motorola.jpg',
+        img: '../../images/motorola.jpg',
         title: 'Motorola Edge 20',
         description: 'Por Motorola',
         price: '$299.990',
@@ -184,7 +184,7 @@ const cellPhonesArray = [
         reviews: 30
     },
     {
-        img: '../../images/phones/samsung.jpg',
+        img: '../../images/samsung.jpg',
         title: 'Samsung Galaxy S21',
         description: 'Por Samsung',
         price: '$1.299.990',
@@ -194,7 +194,7 @@ const cellPhonesArray = [
         reviews: 50
     },
     {
-        img: '../../images/phones/xiomi.jpg',
+        img: '../../images/xiomi.jpg',
         title: 'Xiaomi Mi 11',
         description: 'Por Xiaomi',
         price: '$139.990',
@@ -204,7 +204,7 @@ const cellPhonesArray = [
         reviews: 35
     },
     {
-        img: '../../images/phones/bmobile.jpg',
+        img: '../../images/bmobile.jpg',
         title: 'BMOBILE',
         description: 'Smartphone C41 32GB Gris',
         price: '$49.990',
@@ -214,7 +214,7 @@ const cellPhonesArray = [
         reviews: 35
     },
     {
-        img: '../../images/phones/asus.jpg',
+        img: '../../images/asus.jpg',
         title: 'Asus',
         description: 'Asus ROG Phone 8 Pro AI2401 5G 512GB 16GB - Negro',
         price: '$1.411.990',
@@ -290,7 +290,7 @@ const airConditioningArray = [
 
 const coffeeMakersArray = [
     {
-        img: '../../images/coffee-makers/delonghi.jpg',
+        img: '../../images/delonghi.jpg',
         title: 'DeLonghi Coffee Maker',
         description: 'By DeLonghi',
         price: '$129.990',
@@ -300,7 +300,7 @@ const coffeeMakersArray = [
         reviews: 80
     },
     {
-        img: '../../images/coffee-makers/krups.jpg',
+        img: '../../images/krups.jpg',
         title: 'Krups Coffee Maker',
         description: 'By Krups',
         price: '$149.990',
@@ -310,7 +310,7 @@ const coffeeMakersArray = [
         reviews: 90
     },
     {
-        img: '../../images/coffee-makers/nescafe.jpg',
+        img: '../../images/nescafe.jpg',
         title: 'Nescafé Coffee Maker',
         description: 'By Nescafé',
         price: '$109.990',
@@ -320,7 +320,7 @@ const coffeeMakersArray = [
         reviews: 70
     },
     {
-        img: '../../images/coffee-makers/oster.jpg',
+        img: '../../images/oster.jpg',
         title: 'Oster Coffee Maker',
         description: 'By Oster',
         price: '$99.990',
@@ -330,7 +330,7 @@ const coffeeMakersArray = [
         reviews: 100
     },
     {
-        img: '../../images/coffee-makers/phillips.jpg',
+        img: '../../images/phillips.jpg',
         title: 'Phillips Coffee Maker',
         description: 'By Phillips',
         price: '$139.990',
@@ -340,7 +340,7 @@ const coffeeMakersArray = [
         reviews: 85
     },
     {
-        img: '../../images/coffee-makers/wurden.jpg',
+        img: '../../images/wurden.jpg',
         title: 'Wurden Coffee Maker',
         description: 'By Wurden',
         price: '$119.990',
