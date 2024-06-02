@@ -25,6 +25,8 @@ let initialUsers = [
     }
 ];
 
+let loggedInUser = null;
+
 const products = [
     {
         img: 'images/tv.jpg',
@@ -37,7 +39,7 @@ const products = [
         reviews: 25
     },
     {
-        img: './images/play.jpg',
+        img: '../../images/play.jpg',
         title: 'Playstation 5 Slim Digital Edition',
         description: 'Por Sony',
         price: '$539.990',
@@ -47,7 +49,7 @@ const products = [
         reviews: 15
     },
     {
-        img: './images/mac.jpg',
+        img: '../../images/mac.jpg',
         title: 'Apple Macbook Pro 13.3"i5-7 8GB 512GB',
         description: 'Por Apple',
         price: '$1.350.000',
@@ -57,7 +59,7 @@ const products = [
         reviews: 50
     },
     {
-        img: './images/phone.jpg',
+        img: '../../images/phone.jpg',
         title: 'Apple iPhone 15 Pro Max 256Gb',
         description: 'Por Apple',
         price: '$1.469.990',
@@ -67,7 +69,7 @@ const products = [
         reviews: 30
     },
     {
-        img: './images/earphones.jpg',
+        img: '../../images/earphones.jpg',
         title: 'Audífonos Bose QuietComfort 45',
         description: 'Por Bose',
         price: '$599.990',
@@ -77,7 +79,7 @@ const products = [
         reviews: 40
     },
     {
-        img: './images/watch.jpg',
+        img: '../../images/watch.jpg',
         title: 'Reloj Inteligente Samsung Galaxy Watch 4',
         description: 'Por Samsung',
         price: '$299.990',
@@ -208,7 +210,7 @@ const cellPhonesArray = [
         description: 'Asus ROG Phone 8 Pro AI2401 5G 512GB 16GB - Negro',
         price: '$1.411.990',
         discount: '-12%',
-        originalPrice: '$2.00..000',
+        originalPrice: '$2.000.000',
         rating: 4.3,
         reviews: 35
     }
@@ -277,12 +279,11 @@ const airConditioningArray = [
     }
 ];
 
-
 const coffeeMakersArray = [
     {
         img: '../../images/coffee-makers/delonghi.jpg',
         title: 'DeLonghi Coffee Maker',
-        description: 'By DeLonghii',
+        description: 'By DeLonghi',
         price: '$129.990',
         discount: '-15%',
         originalPrice: '$152.990',
@@ -341,21 +342,6 @@ const coffeeMakersArray = [
     }
 ];
 
-// Function to load initial users into localStorage
-function loadInitialUsers() {
-    if (!localStorage.getItem('users')) {
-        localStorage.setItem('users', JSON.stringify(initialUsers));
-    }
-}
-
-// Function to get users from localStorage
-function getUsers() {
-    return JSON.parse(localStorage.getItem('users'));
-}
-
-
-
-// Function to show toast messages
 function showToast(message, status) {
     const toastContainer = document.getElementById('toast-container');
     const toast = document.createElement('div');
@@ -379,7 +365,6 @@ function showToast(message, status) {
     }, 3000);
 }
 
-// Function to add admin menu option
 function addAdminMenuOption() {
     const adminMenuOption = document.getElementById("admin-menu-option");
     if (adminMenuOption) {
@@ -387,7 +372,6 @@ function addAdminMenuOption() {
     }
 }
 
-// Function to remove admin menu option
 function removeAdminMenuOption() {
     const adminMenuOption = document.getElementById("admin-menu-option");
     if (adminMenuOption) {
@@ -395,13 +379,11 @@ function removeAdminMenuOption() {
     }
 }
 
-// Function to validate email format
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
 }
 
-// Function to handle login
 function login() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -411,85 +393,54 @@ function login() {
         return;
     }
 
-    const user =  initialUsers.find(user => user.email === email && user.password === password);
+    const user = initialUsers.find(user => user.email === email && user.password === password);
 
     if (user) {
-        // Ocultar el modal de inicio de sesión
-        const loginModal = document.getElementById('loginModal');
-        loginModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-        const backdrops = document.getElementsByClassName('modal-backdrop');
-        while (backdrops.length > 0) {
-            backdrops[0].parentNode.removeChild(backdrops[0]);
-        }
-
-        // Guardar la información del usuario en el localStorage
-        localStorage.setItem('loggedInUser', JSON.stringify(user));
-
-        // Actualizar navbar para mostrar el nombre del usuario y el submenú
-        document.getElementById("login-link").classList.add("d-none");
-        document.getElementById("user-menu").classList.remove("d-none");
-        document.getElementById("userName").innerText = user.nombre;
-
-        // Agregar opción "Administración" al menú si el usuario es admin
-        if (user.roles.includes("admin")) {
-            addAdminMenuOption();
-        }
+        $('#loginModal').modal('hide');
+        loggedInUser = user;
+        updateNavbar(user);
     } else {
-        // Mostrar toast
         showToast("Correo electrónico o contraseña incorrectos.", "bg-danger");
     }
 }
 
-// Function to handle logout
 function logout() {
-
-
-    // Actualizar navbar para ocultar el nombre del usuario y el submenú
-    document.getElementById("login-link").classList.remove("d-none");
-    document.getElementById("user-menu").classList.add("d-none");
-    document.getElementById("userName").innerText = '';
-
-    // Limpiar los campos del formulario de inicio de sesión
+    updateNavbar(null);
+    loggedInUser = null;
     document.getElementById("email").value = '';
-    document.getElementById("password").value = '';
-
-    // Remover la opción "Administración" del menú
-    removeAdminMenuOption();
-
-    // Mostrar modal de inicio de sesión
-    const loginModal = document.getElementById('loginModal');
-    loginModal.style.display = 'block';
-    document.body.classList.add('modal-open');
-
-    // Eliminar la información del usuario del localStorage
-    localStorage.removeItem('loggedInUser');
-
+    document.getElementById("password").value= '';
+    $('#loginModal').modal('show');
 }
 
-// Function to check login status on page load
 function checkLoginStatus() {
-    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    updateNavbar(loggedInUser);
+}
+
+function updateNavbar(user) {
     if (user) {
-        // Actualizar navbar para mostrar el nombre del usuario y el submenú
         document.getElementById("login-link").classList.add("d-none");
         document.getElementById("user-menu").classList.remove("d-none");
         document.getElementById("userName").innerText = user.nombre;
-
-        // Agregar opción "Administración" al menú si el usuario es admin
         if (user.roles.includes("admin")) {
             addAdminMenuOption();
         }
+    } else {
+        document.getElementById("login-link").classList.remove("d-none");
+        document.getElementById("user-menu").classList.add("d-none");
+        document.getElementById("userName").innerText = '';
+        removeAdminMenuOption();
     }
 }
 
-// Event listener for login form submission
+document.getElementById("login-link").addEventListener("click", function() {
+    $('#loginModal').modal('show');
+});
+
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault();
     login();
 });
 
-// Event listener for closing the login modal
 document.querySelector('#loginModal .close').addEventListener('click', function() {
     const loginModal = document.getElementById('loginModal');
     loginModal.style.display = 'none';
@@ -500,28 +451,18 @@ document.querySelector('#loginModal .close').addEventListener('click', function(
     }
 });
 
-
 function recoverPass() {
     const email = document.getElementById("email-recover").value;
-
-    if(email === ''){
+    if (email === '') {
         showToast("Por favor, introduce una dirección de correo.", "bg-danger");
         return;
     }
-
     if (!validateEmail(email)) {
         showToast("Por favor, introduce una dirección de correo electrónico válida.", "bg-danger");
     } else {
         showToast("Correo enviado con éxito, favor validar.", "bg-info");
     }
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadInitialUsers();
-    checkLoginStatus();
-});
-
 
 function generateProductHTML(product) {
     const stars = Array.from({ length: 5 }, (_, i) => {
@@ -530,27 +471,32 @@ function generateProductHTML(product) {
     }).join('');
 
     return `
-            <div class="col-md-4">
-                <div class="card mb-4 product-card">
-                    <img src="${product.img}" class="card-img-top" alt="${product.title}">
-                    <div class="card-body">
-                        <span class="badge badge-success">Llega hoy</span>
-                        <h5 class="card-title">${product.title}</h5>
-                        <p class="card-text">${product.description}</p>
-                        <p class="card-price">${product.price} <span class="badge badge-danger">${product.discount}</span></p>
-                        <p class="card-text"><del>${product.originalPrice}</del></p>
-                        <div class="rating">
-                            ${stars} (${product.reviews})
-                        </div>
-                        <a href="#" class="btn btn-primary btn-block">Agregar al Carrito</a>
+        <div class="col-md-4">
+            <div class="card mb-4 product-card">
+                <img src="${product.img}" class="card-img-top" alt="${product.title}">
+                <div class="card-body">
+                    <span class="badge badge-success">Llega hoy</span>
+                    <h5 class="card-title">${product.title}</h5>
+                    <p class="card-text">${product.description}</p>
+                    <p class="card-price">${product.price} <span class="badge badge-danger">${product.discount}</span></p>
+                    <p class="card-text"><del>${product.originalPrice}</del></p>
+                    <div class="rating">
+                        ${stars} (${product.reviews})
                     </div>
+                    <a href="#" class="btn btn-primary btn-block">Agregar al Carrito</a>
                 </div>
             </div>
-        `;
+        </div>
+    `;
 }
 
-function loadProducts() {
-    const carouselInner = document.getElementById('carousel-inner');
+function loadProducts(products, containerId) {
+    const carouselInner = document.getElementById(containerId);
+    if (!carouselInner) {
+        console.error(`Elemento con ID '${containerId}' no encontrado.`);
+        return;
+    }
+
     const itemsPerSlide = 3;
     const numSlides = Math.ceil(products.length / itemsPerSlide);
     let innerHTML = '';
@@ -561,150 +507,37 @@ function loadProducts() {
         const productHTML = products.slice(start, end).map(generateProductHTML).join('');
         const activeClass = i === 0 ? 'active' : '';
         innerHTML += `
-                <div class="carousel-item ${activeClass}">
-                    <div class="row">
-                        ${productHTML}
-                    </div>
+            <div class="carousel-item ${activeClass}">
+                <div class="row">
+                    ${productHTML}
                 </div>
-            `;
+            </div>
+        `;
     }
 
     carouselInner.innerHTML = innerHTML;
 }
 
-
-function generateCellPhonesHTML(product) {
-    const stars = Array.from({ length: 5 }, (_, i) => {
-        const starClass = i < product.rating ? 'fas fa-star text-warning' : 'far fa-star text-warning';
-        return `<i class="${starClass}"></i>`;
-    }).join('');
-
-    return `
-        <div class="col-md-4">
-            <div class="card mb-4 product-card">
-                <img src="${product.img}" class="card-img-top" alt="${product.title}">
-                <div class="card-body">
-                    <span class="badge badge-success">Llega hoy</span>
-                    <h5 class="card-title">${product.title}</h5>
-                    <p class="card-text">${product.description}</p>
-                    <p class="card-price">${product.price} <span class="badge badge-danger">${product.discount}</span></p>
-                    <p class="card-text"><del>${product.originalPrice}</del></p>
-                    <div class="rating">
-                        ${stars} (${product.reviews})
-                    </div>
-                    <a href="#" class="btn btn-primary btn-block">Agregar al Carrito</a>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function generateNotebooksHTML(product) {
-    const stars = Array.from({ length: 5 }, (_, i) => {
-        const starClass = i < product.rating ? 'fas fa-star text-warning' : 'far fa-star text-warning';
-        return `<i class="${starClass}"></i>`;
-    }).join('');
-
-    return `
-        <div class="col-md-4">
-            <div class="card mb-4 product-card">
-                <img src="${product.img}" class="card-img-top" alt="${product.title}">
-                <div class="card-body">
-                    <span class="badge badge-success">Llega hoy</span>
-                    <h5 class="card-title">${product.title}</h5>
-                    <p class="card-text">${product.description}</p>
-                    <p class="card-price">${product.price} <span class="badge badge-danger">${product.discount}</span></p>
-                    <p class="card-text"><del>${product.originalPrice}</del></p>
-                    <div class="rating">
-                        ${stars} (${product.reviews})
-                    </div>
-                    <a href="#" class="btn btn-primary btn-block">Agregar al Carrito</a>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function generateAirConditioningHTML(product) {
-    const stars = Array.from({ length: 5 }, (_, i) => {
-        const starClass = i < product.rating ? 'fas fa-star text-warning' : 'far fa-star text-warning';
-        return `<i class="${starClass}"></i>`;
-    }).join('');
-
-    return `
-        <div class="col-md-4">
-            <div class="card mb-4 product-card">
-                <img src="${product.img}" class="card-img-top" alt="${product.title}">
-                <div class="card-body">
-                    <span class="badge badge-success">Llega hoy</span>
-                    <h5 class="card-title">${product.title}</h5>
-                    <p class="card-text">${product.description}</p>
-                    <p class="card-price">${product.price} <span class="badge badge-danger">${product.discount}</span></p>
-                    <p class="card-text"><del>${product.originalPrice}</del></p>
-                    <div class="rating">
-                        ${stars} (${product.reviews})
-                    </div>
-                    <a href="#" class="btn btn-primary btn-block">Agregar al Carrito</a>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-
-function generateCoffeeMakersHTML(product) {
-    const stars = Array.from({ length: 5 }, (_, i) => {
-        const starClass = i < product.rating ? 'fas fa-star text-warning' : 'far fa-star text-warning';
-        return `<i class="${starClass}"></i>`;
-    }).join('');
-
-    return `
-        <div class="col-md-4">
-            <div class="card mb-4 product-card">
-                <img src="${product.img}" class="card-img-top" alt="${product.title}">
-                <div class="card-body">
-                    <span class="badge badge-success">Llega hoy</span>
-                    <h5 class="card-title">${product.title}</h5>
-                    <p class="card-text">${product.description}</p>
-                    <p class="card-price">${product.price} <span class="badge badge-danger">${product.discount}</span></p>
-                    <p class="card-text"><del>${product.originalPrice}</del></p>
-                    <div class="rating">
-                        ${stars} (${product.reviews})
-                    </div>
-                    <a href="#" class="btn btn-primary btn-block">Agregar al Carrito</a>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function loadNotebooks() {
-    const notebooksList = document.getElementById('notebooks-list');
-    const notebooksHTML = notebooksArray.map(generateNotebooksHTML).join('');
-    notebooksList.innerHTML = notebooksHTML;
-}
-
-function loadCellPhones() {
-    const cellPhonesList = document.getElementById('cellphones-list');
-    const cellPhonesHTML = cellPhonesArray.map(generateCellPhonesHTML).join('');
-    cellPhonesList.innerHTML = cellPhonesHTML;
-}
-
-function loadAirConditioning() {
-    const airConditionList = document.getElementById('air-conditioning-list');
-    const airConditionHTML = airConditioningArray.map(generateAirConditioningHTML).join('');
-    airConditionList.innerHTML = airConditionHTML;
-}
-
-
-function loadCoffeeMakers() {
-    const productList = document.getElementById('coffee-makers-list');
-    const productHTML = coffeeMakersArray.map(generateCoffeeMakersHTML).join('');
+function loadProductList(products, containerId) {
+    const productList = document.getElementById(containerId);
+    if (!productList) {
+        console.error(`Elemento con ID '${containerId}' no encontrado.`);
+        return;
+    }
+    const productHTML = products.map(generateProductHTML).join('');
     productList.innerHTML = productHTML;
 }
 
-function registerUser(){
+document.addEventListener('DOMContentLoaded', () => {
+    checkLoginStatus();
+    loadProducts(products, 'carousel-inner');
+    loadProductList(notebooksArray, 'notebooks-list');
+    loadProductList(cellPhonesArray, 'cellphones-list');
+    loadProductList(airConditioningArray, 'air-conditioning-list');
+    loadProductList(coffeeMakersArray, 'coffee-makers-list');
+});
 
+function registerUser() {
     const name = document.getElementById('name');
     const surname = document.getElementById('surname');
     const rut = document.getElementById('rut');
@@ -728,6 +561,7 @@ function registerUser(){
     toggleFieldClass(email, isValidEmail);
     toggleFieldClass(password, isValidPassword);
     toggleCheckboxClass(promo, isPromoChecked);
+
     if (isValidName && isValidSurname && isValidRUT && isValidPhone && isValidEmail && isValidPassword && isPromoChecked) {
         const newUser = {
             nombre: name.value,
@@ -737,19 +571,9 @@ function registerUser(){
             roles: ["customer"]
         };
         initialUsers.push(newUser);
-        // Guardar la información del usuario en el localStorage
-        localStorage.setItem('loggedInUser', JSON.stringify(newUser));
-
-        // Actualizar navbar para mostrar el nombre del usuario y el submenú
-        document.getElementById("login-link").classList.add("d-none");
-        document.getElementById("user-menu").classList.remove("d-none");
-        document.getElementById("userName").innerText = newUser.nombre;
-
-        // Agregar opción "Administración" al menú si el usuario es admin
-        if (newUser.roles.includes("admin")) {
-            addAdminMenuOption();
-        }
-        showToast("Usuario registrado con exito", "bg-info");
+        loggedInUser = newUser;
+        updateNavbar(newUser);
+        showToast("Usuario registrado con éxito", "bg-info");
     }
 }
 
@@ -760,7 +584,6 @@ function validateField(field, regex) {
 function isEmptyField(field) {
     return field.value.trim() === '';
 }
-
 
 function validatePassword(password) {
     const minLength = 8;
@@ -777,13 +600,6 @@ function toggleFieldClass(field, isValid) {
     } else {
         field.classList.add('is-invalid');
     }
-    const style = document.createElement('style');
-    style.innerHTML = `
-    .is-invalid {
-        border-color: red;
-    }
-`;
-    document.head.appendChild(style);
 }
 
 function toggleCheckboxClass(checkbox, isValid) {
@@ -793,9 +609,3 @@ function toggleCheckboxClass(checkbox, isValid) {
         checkbox.classList.add('is-invalid');
     }
 }
-
-document.addEventListener('DOMContentLoaded', loadProducts);
-document.addEventListener('DOMContentLoaded', loadCellPhones);
-document.addEventListener('DOMContentLoaded', loadNotebooks);
-document.addEventListener('DOMContentLoaded', loadAirConditioning);
-document.addEventListener('DOMContentLoaded', loadCoffeeMakers);
