@@ -25,7 +25,8 @@ let initialUsers = [
     }
 ];
 
-let loggedInUser = null;
+let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || null;
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 const products = [
     {
@@ -398,13 +399,16 @@ function login() {
     if (user) {
         $('#loginModal').modal('hide');
         loggedInUser = user;
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
         updateNavbar(user);
+        showToast("Inicio de sesión exitoso", "bg-info");
     } else {
         showToast("Correo electrónico o contraseña incorrectos.", "bg-danger");
     }
 }
 
 function logout() {
+    localStorage.removeItem('loggedInUser');
     updateNavbar(null);
     loggedInUser = null;
     document.getElementById("email").value = '';
@@ -483,7 +487,7 @@ function generateProductHTML(product) {
                     <div class="rating">
                         ${stars} (${product.reviews})
                     </div>
-                    <a href="#" class="btn btn-primary btn-block">Agregar al Carrito</a>
+                    <button onclick='addToCart(${JSON.stringify(product)})' class="btn btn-primary btn-block">Agregar al Carrito</button>
                 </div>
             </div>
         </div>
@@ -535,6 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProductList(cellPhonesArray, 'cellphones-list');
     loadProductList(airConditioningArray, 'air-conditioning-list');
     loadProductList(coffeeMakersArray, 'coffee-makers-list');
+    updateCartCount();
 });
 
 function registerUser() {
@@ -572,8 +577,12 @@ function registerUser() {
         };
         initialUsers.push(newUser);
         loggedInUser = newUser;
+        localStorage.setItem('loggedInUser', JSON.stringify(newUser));
         updateNavbar(newUser);
         showToast("Usuario registrado con éxito", "bg-info");
+        setTimeout(() => {
+            window.location.href = "../index.html";
+        }, 2000);
     }
 }
 
@@ -609,3 +618,128 @@ function toggleCheckboxClass(checkbox, isValid) {
         checkbox.classList.add('is-invalid');
     }
 }
+
+function updateCartCount() {
+    const cartCount = document.getElementById('cart-count');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartCount.textContent = cart.length;
+}
+
+function addToCart(product) {
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    showToast("Producto agregado al carrito", "bg-info");
+}
+
+function displayCartItems() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Tu carrito está vacío</p>';
+    } else {
+        cartItemsContainer.innerHTML = '';
+        cart.forEach((product, index) => {
+            const productElement = document.createElement('div');
+            productElement.classList.add('cart-item');
+            productElement.innerHTML = `
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="${product.img}" class="img-fluid" alt="${product.title}">
+                    </div>
+                    <div class="col-md-3">
+                        <h5>${product.title}</h5>
+                        <p>${product.description}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" class="form-control" value="1" min="1">
+                    </div>
+                    <div class="col-md-2">
+                        <p>${product.price}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Eliminar</button>
+                    </div>
+                </div>
+            `;
+            cartItemsContainer.appendChild(productElement);
+        });
+    }
+}
+
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    displayCartItems();
+    updateCartCount();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    checkLoginStatus();
+    loadProducts(products, 'carousel-inner');
+    loadProductList(notebooksArray, 'notebooks-list');
+    loadProductList(cellPhonesArray, 'cellphones-list');
+    loadProductList(airConditioningArray, 'air-conditioning-list');
+    loadProductList(coffeeMakersArray, 'coffee-makers-list');
+    updateCartCount();
+    displayCartItems();
+});
+
+
+function displayCartItems() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartTotal = 0;
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Tu carrito está vacío</p>';
+    } else {
+        cartItemsContainer.innerHTML = '';
+        cart.forEach((product, index) => {
+            const price = parseFloat(product.price.replace('$', '').replace(',', ''));
+            cartTotal += price;
+
+            const productElement = document.createElement('div');
+            productElement.classList.add('cart-item');
+            productElement.innerHTML = `
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="../${product.img}" class="img-fluid" alt="${product.title}">
+                        </div>
+                        <div class="col-md-4 cart-item-details">
+                            <h5>${product.title}</h5>
+                            <p>${product.description}</p>
+                        </div>
+                        <div class="col-md-2 cart-item-price">
+                            <p>${product.price}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" value="1" min="1">
+                        </div>
+                        <div class="col-md-2 cart-item-remove">
+                            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            cartItemsContainer.appendChild(productElement);
+        });
+
+        document.getElementById('summary-products').textContent = `$${cartTotal.toFixed(2)}`;
+        document.getElementById('summary-total').textContent = `$${cartTotal.toFixed(2)}`;
+    }
+}
+
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    displayCartItems();
+    updateCartCount();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    displayCartItems();
+    updateCartCount();
+});

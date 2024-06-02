@@ -7,11 +7,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-custom">
     <a class="navbar-brand" href="../index.html">
         <img src="../images/elite-logo.jpg" alt="Elite Market"> Elite Market
@@ -21,17 +19,33 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="../index.html">Inicio</a>
+            <li class="nav-item menu-container">
+                <button class="menu-button">
+                    <i class="fas fa-bars"></i> Menú
+                </button>
+                <div class="menu-dropdown">
+                    <a href="#">Tecnología</a>
+                    <div class="submenu">
+                        <a href="../templates/categories/notebooks.html">Computadoras</a>
+                        <a href="../templates/categories/cell-phones.html">Celulares</a>
+                    </div>
+                    <a href="#">Electrohogar</a>
+                    <div class="submenu">
+                        <a href="../templates/categories/air-conditioning-portable.html">Aire acondicionado</a>
+                        <a href="../templates/categories/coffee-makers.html">Cafeteras eléctricas</a>
+                    </div>
+                    <a href="../templates/admin.html" id="admin-menu-option" class="d-none">Administración</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../templates/product.html">Productos</a>
+            <li class="nav-item pt-2">
+                <a class="nav-link" href="../index.html">Inicio</a>
             </li>
         </ul>
         <form class="form-inline mx-auto">
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar en Elite Market" aria-label="Buscar">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </form>
+
         <div class="user-options">
             <a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal" id="login-link"><i class="fas fa-user"></i> Hola, Inicia sesión</a>
             <div class="dropdown d-none" id="user-menu">
@@ -39,52 +53,53 @@
                     <i class="fas fa-user"></i> Hola, <span id="userName">Usuario</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="account.html">Mi cuenta</a>
-                    <a class="dropdown-item" href="#">Mis CMR Puntos</a>
+                    <a class="dropdown-item" href="../templates/account.html">Mi cuenta</a>
                     <a class="dropdown-item" href="cart.html">Mis compras</a>
-                    <a class="dropdown-item" href="#">Mis Gift Cards</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" id="logout">Cerrar sesión</a>
+                    <a class="dropdown-item" href="#" id="logout" onclick="logout()">Cerrar sesión</a>
                 </div>
             </div>
             <a href="#" class="nav-link"><i class="fas fa-heart"></i></a>
-            <a href="./templates/cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Mis compras</a>
+            <a href="../templates/cart.html" class="nav-link">
+                <i class="fas fa-shopping-cart"></i> Mis compras
+                <span class="badge badge-pill badge-danger" id="cart-count">0</span>
+            </a>
         </div>
     </div>
 </nav>
 
-<!-- Main Content -->
-<div class="main-content container mt-5">
-    <h2>Mi Carrito</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Producto</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Total</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Televisor 4K</td>
-            <td>
-                <input type="number" class="form-control" value="1" min="1">
-            </td>
-            <td>$599.99</td>
-            <td>$599.99</td>
-            <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="text-right">
-        <h4>Total: $599.99</h4>
-        <button class="btn btn-primary btn-lg">Proceder al Pago</button>
+<div class="container mt-5">
+    <h2 class="text-center">Carrito de Compras</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <div id="cart-items">
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="summary">
+                <h4>Resumen de la compra</h4>
+                <div class="summary-item">
+                    <span>Productos</span>
+                    <span id="summary-products">$0</span>
+                </div>
+                <div class="summary-item">
+                    <span>Descuentos</span>
+                    <span id="summary-discounts">-$0</span>
+                </div>
+                <div class="summary-item summary-total">
+                    <span>Total</span>
+                    <span id="summary-total">$0</span>
+                </div>
+                <button class="btn btn-primary btn-block mt-3" id="checkout-button">Pagar</button>
+            </div>
+        </div>
     </div>
 </div>
+
 <div id="toast-container" aria-live="polite" aria-atomic="true" class="position-fixed" style="bottom: 1rem; left: 1rem; z-index: 1055;">
 </div>
+
 <footer class="footer-custom mt-5">
     <div class="container">
         <div class="row">
@@ -120,8 +135,66 @@
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../js/index.js"></script>
+<script>
+    function displayCartItems() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartTotal = 0;
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Tu carrito está vacío</p>';
+        } else {
+            cartItemsContainer.innerHTML = '';
+            cart.forEach((product, index) => {
+                const price = parseFloat(product.price.replace('$', '').replace(',', ''));
+                cartTotal += price;
+
+                const productElement = document.createElement('div');
+                productElement.classList.add('cart-item');
+                productElement.innerHTML = `
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="../${product.img}" class="img-fluid" alt="${product.title}">
+                        </div>
+                        <div class="col-md-4 cart-item-details">
+                            <h5>${product.title}</h5>
+                            <p>${product.description}</p>
+                        </div>
+                        <div class="col-md-2 cart-item-price">
+                            <p>${product.price}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" class="form-control" value="1" min="1">
+                        </div>
+                        <div class="col-md-2 cart-item-remove">
+                            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(productElement);
+            });
+
+            document.getElementById('summary-products').textContent = `$${cartTotal.toFixed(2)}`;
+            document.getElementById('summary-total').textContent = `$${cartTotal.toFixed(2)}`;
+        }
+    }
+
+    function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCartItems();
+        updateCartCount();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        displayCartItems();
+        updateCartCount();
+    });
+</script>
 </body>
 </html>

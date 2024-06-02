@@ -331,3 +331,50 @@ ul.list-unstyled li i {
 .admin-section.active {
     display: block;
 }
+.cart-item {
+    border-bottom: 1px solid #eaeaea;
+    padding: 15px 0;
+}
+.cart-item:last-child {
+    border-bottom: none;
+}
+.cart-item img {
+    max-width: 100px;
+    margin-right: 15px;
+}
+.cart-item-details {
+    flex-grow: 1;
+}
+.cart-item-price,
+.cart-item-remove {
+    text-align: right;
+}
+.cart-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.cart-actions {
+    text-align: right;
+}
+.summary {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.summary h4 {
+    margin-bottom: 20px;
+}
+.summary .summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.summary .summary-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.summary .btn {
+    width: 100%;
+}
+
