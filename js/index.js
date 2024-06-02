@@ -1,28 +1,25 @@
-const initialUsers = [
+let initialUsers = [
     {
-        email: "mfuentes@gmail.com",
-        password: "admin123",
         nombre: "Matias",
         apellido: "Fuentes",
-        edad: 28,
+        email: "mfuentes@gmail.com",
+        password: "admin123",
         direccion: "Los naranjos 0228",
         roles: ["admin"]
     },
     {
-        email: "frojas@gmail.com",
-        password: "admin123",
         nombre: "Francisca",
         apellido: "Rojas",
-        edad: 28,
+        email: "frojas@gmail.com",
+        password: "customer123",
         direccion: "456 User Ave.",
         roles: ["customer"]
     },
     {
-        email: "user2@example.com",
-        password: "user123",
         nombre: "Juan",
         apellido: "Perez",
-        edad: 32,
+        email: "jperez@gmail.com",
+        password: "customer123",
         direccion: "789 User Blvd.",
         roles: ["customer"]
     }
@@ -346,9 +343,9 @@ const coffeeMakersArray = [
 
 // Function to load initial users into localStorage
 function loadInitialUsers() {
-    if (!localStorage.getItem('users')) {
-        localStorage.setItem('users', JSON.stringify(initialUsers));
-    }
+    // if (!localStorage.getItem('users')) {
+    //     localStorage.setItem('users', JSON.stringify(initialUsers));
+    // }
 }
 
 // Function to get users from localStorage
@@ -356,11 +353,7 @@ function getUsers() {
     return JSON.parse(localStorage.getItem('users'));
 }
 
-// Function to find a user by email and password
-function findUser(email, password) {
-    const users = getUsers();
-    return users.find(user => user.email === email && user.password === password);
-}
+
 
 // Function to show toast messages
 function showToast(message, status) {
@@ -418,7 +411,7 @@ function login() {
         return;
     }
 
-    const user = findUser(email, password);
+    const user =  initialUsers.find(user => user.email === email && user.password === password);
 
     if (user) {
         // Ocultar el modal de inicio de sesión
@@ -683,21 +676,21 @@ function generateCoffeeMakersHTML(product) {
 }
 
 function loadNotebooks() {
-    const productList = document.getElementById('notebooks-list');
-    const productHTML = notebooksArray.map(generateNotebooksHTML).join('');
-    productList.innerHTML = productHTML;
+    const notebooksList = document.getElementById('notebooks-list');
+    const notebooksHTML = notebooksArray.map(generateNotebooksHTML).join('');
+    notebooksList.innerHTML = notebooksHTML;
 }
 
 function loadCellPhones() {
-    const productList = document.getElementById('cellphones-list');
-    const productHTML = cellPhonesArray.map(generateCellPhonesHTML).join('');
-    productList.innerHTML = productHTML;
+    const cellPhonesList = document.getElementById('cellphones-list');
+    const cellPhonesHTML = cellPhonesArray.map(generateCellPhonesHTML).join('');
+    cellPhonesList.innerHTML = cellPhonesHTML;
 }
 
 function loadAirConditioning() {
-    const productList = document.getElementById('air-conditioning-list');
-    const productHTML = airConditioningArray.map(generateAirConditioningHTML).join('');
-    productList.innerHTML = productHTML;
+    const airConditionList = document.getElementById('air-conditioning-list');
+    const airConditionHTML = airConditioningArray.map(generateAirConditioningHTML).join('');
+    airConditionList.innerHTML = airConditionHTML;
 }
 
 
@@ -705,6 +698,97 @@ function loadCoffeeMakers() {
     const productList = document.getElementById('coffee-makers-list');
     const productHTML = coffeeMakersArray.map(generateCoffeeMakersHTML).join('');
     productList.innerHTML = productHTML;
+}
+
+function registerUser(){
+
+    const name = document.getElementById('name');
+    const surname = document.getElementById('surname');
+    const rut = document.getElementById('rut');
+    const phone = document.getElementById('phone');
+    const email = document.getElementById('email-register');
+    const password = document.getElementById('password-register');
+    const promo = document.getElementById('promo');
+
+    const isValidName = validateField(name, /^[a-zA-Z\s]+$/) && !isEmptyField(name);
+    const isValidSurname = validateField(surname, /^[a-zA-Z\s]+$/) && !isEmptyField(surname);
+    const isValidRUT = validateField(rut, /^[0-9]+-[0-9kK]$/) && !isEmptyField(rut);
+    const isValidPhone = validateField(phone, /^[0-9]{9}$/) && !isEmptyField(phone);
+    const isValidEmail = validateEmail(email.value) && !isEmptyField(email);
+    const isValidPassword = validatePassword(password.value) && !isEmptyField(password);
+    const isPromoChecked = promo.checked;
+
+    toggleFieldClass(name, isValidName);
+    toggleFieldClass(surname, isValidSurname);
+    toggleFieldClass(rut, isValidRUT);
+    toggleFieldClass(phone, isValidPhone);
+    toggleFieldClass(email, isValidEmail);
+    toggleFieldClass(password, isValidPassword);
+    toggleCheckboxClass(promo, isPromoChecked);
+    if (isValidName && isValidSurname && isValidRUT && isValidPhone && isValidEmail && isValidPassword && isPromoChecked) {
+        const newUser = {
+            nombre: name.value,
+            apellido: surname.value,
+            email: email.value,
+            password: password.value,
+            roles: ["customer"]
+        };
+        initialUsers.push(newUser);
+        // Guardar la información del usuario en el localStorage
+        localStorage.setItem('loggedInUser', JSON.stringify(newUser));
+
+        // Actualizar navbar para mostrar el nombre del usuario y el submenú
+        document.getElementById("login-link").classList.add("d-none");
+        document.getElementById("user-menu").classList.remove("d-none");
+        document.getElementById("userName").innerText = newUser.nombre;
+
+        // Agregar opción "Administración" al menú si el usuario es admin
+        if (newUser.roles.includes("admin")) {
+            addAdminMenuOption();
+        }
+        showToast("Usuario registrado con exito", "bg-info");
+    }
+}
+
+function validateField(field, regex) {
+    return regex.test(field.value.trim());
+}
+
+function isEmptyField(field) {
+    return field.value.trim() === '';
+}
+
+
+function validatePassword(password) {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    return password.length >= minLength && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChar;
+}
+
+function toggleFieldClass(field, isValid) {
+    if (isValid) {
+        field.classList.remove('is-invalid');
+    } else {
+        field.classList.add('is-invalid');
+    }
+    const style = document.createElement('style');
+    style.innerHTML = `
+    .is-invalid {
+        border-color: red;
+    }
+`;
+    document.head.appendChild(style);
+}
+
+function toggleCheckboxClass(checkbox, isValid) {
+    if (isValid) {
+        checkbox.classList.remove('is-invalid');
+    } else {
+        checkbox.classList.add('is-invalid');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', loadProducts);
