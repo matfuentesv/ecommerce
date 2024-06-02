@@ -159,28 +159,38 @@
                 const price = formatPrice(product.price);
                 cartTotal += price;
 
+                let imgPath = '';
+                // Verificar si la imagen proviene de una categoría específica o del index.html
+                console.log("Elemento:"+  product.title);
+                console.log("Img:"+  product.img);
+                if (product.catalogo) {
+                    imgPath = "../"+`${product.img}`;
+                } else {
+                    imgPath = `images/${product.img}`.replace("../,,/","");
+                }
+
                 const productElement = document.createElement('div');
                 productElement.classList.add('cart-item');
                 productElement.innerHTML = `
-                    <div class="row align-items-center">
-                        <div class="col-md-2">
-                            <img src="../${product.img}" class="img-fluid" alt="${product.title}">
-                        </div>
-                        <div class="col-md-4 cart-item-details">
-                            <h5>${product.title}</h5>
-                            <p>${product.description}</p>
-                        </div>
-                        <div class="col-md-2 cart-item-price">
-                            <p>${product.price}</p>
-                        </div>
-                        <div class="col-md-2">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-index="${index}">
-                        </div>
-                        <div class="col-md-2 cart-item-remove">
-                            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Eliminar</button>
-                        </div>
+                <div class="row align-items-center">
+                    <div class="col-md-2">
+                        <img src="${imgPath}" class="img-fluid" alt="${product.title}">
                     </div>
-                `;
+                    <div class="col-md-4 cart-item-details">
+                        <h5>${product.title}</h5>
+                        <p>${product.description}</p>
+                    </div>
+                    <div class="col-md-2 cart-item-price">
+                        <p>${product.price}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" class="form-control quantity-input" value="1" min="1" data-index="${index}">
+                    </div>
+                    <div class="col-md-2 cart-item-remove">
+                        <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Eliminar</button>
+                    </div>
+                </div>
+            `;
                 cartItemsContainer.appendChild(productElement);
             });
 

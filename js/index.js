@@ -1,3 +1,4 @@
+
 let initialUsers = [
     {
         nombre: "Matias",
@@ -30,70 +31,77 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 const products = [
     {
-        img: 'images/phones/asus.jpg',
+        img: 'images/asus.jpg',
         title: 'Asus',
         description: 'Asus ROG Phone 8 Pro AI2401 5G 512GB 16GB - Negro',
         price: '$1.411.990',
         discount: '-12%',
         originalPrice: '$2.000.000',
         rating: 4.3,
-        reviews: 35
+        reviews: 35,
+        catalogo: true
     },
     {
-        img: 'images/notebooks/mac.jpg',
+        img: 'images/mac.jpg',
         title: 'Apple MacBook Pro',
         description: 'Por Apple',
         price: '$1.199.990',
         discount: '-5%',
         originalPrice: '$1.259.990',
         rating: 4.8,
-        reviews: 200
+        reviews: 200,
+        catalogo: true
     },
     {
-        img: 'images/air-conditioning-portable/thorben.jpg',
+        img: 'images/thorben.jpg',
         title: 'Thorben Portable Air Conditioner',
         description: 'By Thorben',
         price: '$349.990',
         discount: '-10%',
         originalPrice: '$389.990',
         rating: 4.6,
-        reviews: 85
+        reviews: 85,
+        catalogo: true
     },
     {
-        img: 'images/phones/huawei.jpg',
+        img: 'images/huawei.jpg',
         title: 'Huawei P30 Pro',
         description: 'Por Huawei',
         price: '$799.990',
         discount: '-20%',
         originalPrice: '$874.990',
         rating: 4.5,
-        reviews: 40
+        reviews: 40,
+        catalogo: true
     },
     {
-        img: 'images/coffee-makers/wurden.jpg',
+        img: 'images/wurden.jpg',
         title: 'Wurden Coffee Maker',
         description: 'By Wurden',
         price: '$119.990',
         discount: '-10%',
         originalPrice: '$133.990',
         rating: 4.4,
-        reviews: 75
+        reviews: 75,
+        catalogo: true
+
     },
     {
-        img: 'images/notebooks/dell.jpg',
+        img: 'images/dell.jpg',
         title: 'Dell Inspiron 15',
         description: 'Por Dell',
         price: '$549.990',
         discount: '-10%',
         originalPrice: '$610.000',
         rating: 4.2,
-        reviews: 95
+        reviews: 95,
+        catalogo: true
     }
 ];
 
 const notebooksArray = [
     {
-        img: '../../images/notebooks/aus.jpg',
+        img: '../../images/dell.jpg',
         title: 'ASUS VivoBook 15',
         description: 'Por ASUS',
         price: '$499.990',
@@ -103,7 +111,7 @@ const notebooksArray = [
         reviews: 120
     },
     {
-        img: '../../images/notebooks/dell.jpg',
+        img: '../../images/dell.jpg',
         title: 'Dell Inspiron 15',
         description: 'Por Dell',
         price: '$549.990',
@@ -113,7 +121,7 @@ const notebooksArray = [
         reviews: 95
     },
     {
-        img: '../../images/notebooks/hp.jpg',
+        img: '../../images/hp.jpg',
         title: 'HP Pavilion 14',
         description: 'Por HP',
         price: '$479.990',
@@ -123,7 +131,7 @@ const notebooksArray = [
         reviews: 150
     },
     {
-        img: '../../images/notebooks/lenovo.jpg',
+        img: '../../images/lenovo.jpg',
         title: 'Lenovo IdeaPad 3',
         description: 'Por Lenovo',
         price: '$459.990',
@@ -133,7 +141,7 @@ const notebooksArray = [
         reviews: 80
     },
     {
-        img: '../../images/notebooks/mac.jpg',
+        img: '../../images/mac.jpg',
         title: 'Apple MacBook Pro',
         description: 'Por Apple',
         price: '$1.199.990',
@@ -143,7 +151,7 @@ const notebooksArray = [
         reviews: 200
     },
     {
-        img: '../../images/notebooks/samsung.jpg',
+        img: '../../images/samsung.jpg',
         title: 'Samsung Galaxy Book',
         description: 'Por Samsung',
         price: '$659.990',
@@ -156,7 +164,7 @@ const notebooksArray = [
 
 const cellPhonesArray = [
     {
-        img: '../../images/phones/huawei.jpg',
+        img: '../../huawei.jpg',
         title: 'Huawei P30 Pro',
         description: 'Por Huawei',
         price: '$799.990',
@@ -219,7 +227,7 @@ const cellPhonesArray = [
 
 const airConditioningArray = [
     {
-        img: '../../images/air-conditioning-portable/clark.jpg',
+        img: '../../images/clark.jpg',
         title: 'Clark Portable Air Conditioner',
         description: 'By Clark',
         price: '$299.990',
@@ -229,7 +237,7 @@ const airConditioningArray = [
         reviews: 80
     },
     {
-        img: '../../images/air-conditioning-portable/gree.jpg',
+        img: '../../images/gree.jpg',
         title: 'Gree Portable Air Conditioner',
         description: 'By Gree',
         price: '$319.990',
@@ -239,7 +247,7 @@ const airConditioningArray = [
         reviews: 90
     },
     {
-        img: '../../images/air-conditioning-portable/kendal.jpg',
+        img: '../../images/kendal.jpg',
         title: 'Kendal Portable Air Conditioner',
         description: 'By Kendal',
         price: '$289.990',
@@ -249,7 +257,7 @@ const airConditioningArray = [
         reviews: 70
     },
     {
-        img: '../../images/air-conditioning-portable/midea.jpg',
+        img: '../../images/midea.jpg',
         title: 'Midea Portable Air Conditioner',
         description: 'By Midea',
         price: '$339.990',
@@ -259,7 +267,7 @@ const airConditioningArray = [
         reviews: 100
     },
     {
-        img: '../../images/air-conditioning-portable/soler.jpg',
+        img: '../../images/soler.jpg',
         title: 'Soler & Palau Portable Air Conditioner',
         description: 'By Soler & Palau',
         price: '$299.990',
@@ -269,7 +277,7 @@ const airConditioningArray = [
         reviews: 65
     },
     {
-        img: '../../images/air-conditioning-portable/thorben.jpg',
+        img: '../../images/thorben.jpg',
         title: 'Thorben Portable Air Conditioner',
         description: 'By Thorben',
         price: '$349.990',
@@ -477,7 +485,7 @@ function generateProductHTML(product) {
     return `
         <div class="col-md-4">
             <div class="card mb-4 product-card">
-                <img src="${product.img}" class="card-img-top" alt="${product.title}">
+                 <img src="${product.img}" class="card-img-top" alt="${product.title}">
                 <div class="card-body">
                     <span class="badge badge-success">Llega hoy</span>
                     <h5 class="card-title">${product.title}</h5>
@@ -715,7 +723,7 @@ function displayCartItems() {
                         <div class="col-md-2 cart-item-price">
                             <p>${product.price}</p>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md2">
                             <input type="number" class="form-control" value="1" min="1">
                         </div>
                         <div class="col-md-2 cart-item-remove">
