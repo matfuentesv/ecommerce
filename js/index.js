@@ -343,9 +343,9 @@ const coffeeMakersArray = [
 
 // Function to load initial users into localStorage
 function loadInitialUsers() {
-    // if (!localStorage.getItem('users')) {
-    //     localStorage.setItem('users', JSON.stringify(initialUsers));
-    // }
+    if (!localStorage.getItem('users')) {
+        localStorage.setItem('users', JSON.stringify(initialUsers));
+    }
 }
 
 // Function to get users from localStorage
@@ -443,8 +443,7 @@ function login() {
 
 // Function to handle logout
 function logout() {
-    // Eliminar la información del usuario del localStorage
-    localStorage.removeItem('loggedInUser');
+
 
     // Actualizar navbar para ocultar el nombre del usuario y el submenú
     document.getElementById("login-link").classList.remove("d-none");
@@ -462,6 +461,10 @@ function logout() {
     const loginModal = document.getElementById('loginModal');
     loginModal.style.display = 'block';
     document.body.classList.add('modal-open');
+
+    // Eliminar la información del usuario del localStorage
+    localStorage.removeItem('loggedInUser');
+
 }
 
 // Function to check login status on page load

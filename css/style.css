@@ -321,3 +321,13 @@ ul.list-unstyled li i {
 .toast .close {
     color: white;
 }
+
+.container {
+    flex: 1;
+}
+.admin-section {
+    display: none;
+}
+.admin-section.active {
+    display: block;
+}
