@@ -29,64 +29,64 @@ let loggedInUser = null;
 
 const products = [
     {
-        img: 'images/tv.jpg',
-        title: 'Smart TV LED Samsung 75 UHD Crystal 4K',
-        description: 'Por Samsung',
-        price: '$1.029.990',
-        discount: '-33%',
-        originalPrice: '$1.549.990',
-        rating: 4,
-        reviews: 25
+        img: 'images/phones/asus.jpg',
+        title: 'Asus',
+        description: 'Asus ROG Phone 8 Pro AI2401 5G 512GB 16GB - Negro',
+        price: '$1.411.990',
+        discount: '-12%',
+        originalPrice: '$2.000.000',
+        rating: 4.3,
+        reviews: 35
     },
     {
-        img: '../../images/play.jpg',
-        title: 'Playstation 5 Slim Digital Edition',
-        description: 'Por Sony',
-        price: '$539.990',
-        discount: '-10%',
-        originalPrice: '$599.990',
-        rating: 3.5,
-        reviews: 15
-    },
-    {
-        img: '../../images/mac.jpg',
-        title: 'Apple Macbook Pro 13.3"i5-7 8GB 512GB',
+        img: 'images/notebooks/mac.jpg',
+        title: 'Apple MacBook Pro',
         description: 'Por Apple',
-        price: '$1.350.000',
+        price: '$1.199.990',
         discount: '-5%',
-        originalPrice: '$1.420.000',
-        rating: 5,
-        reviews: 50
+        originalPrice: '$1.259.990',
+        rating: 4.8,
+        reviews: 200
     },
     {
-        img: '../../images/phone.jpg',
-        title: 'Apple iPhone 15 Pro Max 256Gb',
-        description: 'Por Apple',
-        price: '$1.469.990',
+        img: 'images/air-conditioning-portable/thorben.jpg',
+        title: 'Thorben Portable Air Conditioner',
+        description: 'By Thorben',
+        price: '$349.990',
         discount: '-10%',
-        originalPrice: '$1.649.990',
-        rating: 3.5,
-        reviews: 30
+        originalPrice: '$389.990',
+        rating: 4.6,
+        reviews: 85
     },
     {
-        img: '../../images/earphones.jpg',
-        title: 'Audífonos Bose QuietComfort 45',
-        description: 'Por Bose',
-        price: '$599.990',
+        img: 'images/phones/huawei.jpg',
+        title: 'Huawei P30 Pro',
+        description: 'Por Huawei',
+        price: '$799.990',
         discount: '-20%',
-        originalPrice: '$749.990',
-        rating: 4,
+        originalPrice: '$874.990',
+        rating: 4.5,
         reviews: 40
     },
     {
-        img: '../../images/watch.jpg',
-        title: 'Reloj Inteligente Samsung Galaxy Watch 4',
-        description: 'Por Samsung',
-        price: '$299.990',
-        discount: '-15%',
-        originalPrice: '$349.990',
-        rating: 4,
-        reviews: 10
+        img: 'images/coffee-makers/wurden.jpg',
+        title: 'Wurden Coffee Maker',
+        description: 'By Wurden',
+        price: '$119.990',
+        discount: '-10%',
+        originalPrice: '$133.990',
+        rating: 4.4,
+        reviews: 75
+    },
+    {
+        img: 'images/notebooks/dell.jpg',
+        title: 'Dell Inspiron 15',
+        description: 'Por Dell',
+        price: '$549.990',
+        discount: '-10%',
+        originalPrice: '$610.000',
+        rating: 4.2,
+        reviews: 95
     }
 ];
 
