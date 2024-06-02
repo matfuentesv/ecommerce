@@ -91,6 +91,69 @@ const products = [
     }
 ];
 
+const notebooksArray = [
+    {
+        img: '../../images/notebooks/aus.jpg',
+        title: 'ASUS VivoBook 15',
+        description: 'Por ASUS',
+        price: '$499.990',
+        discount: '-15%',
+        originalPrice: '$599.990',
+        rating: 4.5,
+        reviews: 120
+    },
+    {
+        img: '../../images/notebooks/dell.jpg',
+        title: 'Dell Inspiron 15',
+        description: 'Por Dell',
+        price: '$549.990',
+        discount: '-10%',
+        originalPrice: '$610.000',
+        rating: 4.2,
+        reviews: 95
+    },
+    {
+        img: '../../images/notebooks/hp.jpg',
+        title: 'HP Pavilion 14',
+        description: 'Por HP',
+        price: '$479.990',
+        discount: '-20%',
+        originalPrice: '$599.990',
+        rating: 4.7,
+        reviews: 150
+    },
+    {
+        img: '../../images/notebooks/lenovo.jpg',
+        title: 'Lenovo IdeaPad 3',
+        description: 'Por Lenovo',
+        price: '$459.990',
+        discount: '-10%',
+        originalPrice: '$510.000',
+        rating: 4.3,
+        reviews: 80
+    },
+    {
+        img: '../../images/notebooks/mac.jpg',
+        title: 'Apple MacBook Pro',
+        description: 'Por Apple',
+        price: '$1.199.990',
+        discount: '-5%',
+        originalPrice: '$1.259.990',
+        rating: 4.8,
+        reviews: 200
+    },
+    {
+        img: '../../images/notebooks/samsung.jpg',
+        title: 'Samsung Galaxy Book',
+        description: 'Por Samsung',
+        price: '$659.990',
+        discount: '-12%',
+        originalPrice: '$749.990',
+        rating: 4.4,
+        reviews: 110
+    }
+];
+
 const cellPhonesArray = [
     {
         img: '../../images/phones/huawei.jpg',
@@ -141,10 +204,145 @@ const cellPhonesArray = [
         originalPrice: '$80.000',
         rating: 4.3,
         reviews: 35
+    },
+    {
+        img: '../../images/phones/asus.jpg',
+        title: 'Asus',
+        description: 'Asus ROG Phone 8 Pro AI2401 5G 512GB 16GB - Negro',
+        price: '$1.411.990',
+        discount: '-12%',
+        originalPrice: '$2.00..000',
+        rating: 4.3,
+        reviews: 35
+    }
+];
+
+const airConditioningArray = [
+    {
+        img: '../../images/air-conditioning-portable/clark.jpg',
+        title: 'Clark Portable Air Conditioner',
+        description: 'By Clark',
+        price: '$299.990',
+        discount: '-15%',
+        originalPrice: '$349.990',
+        rating: 4.2,
+        reviews: 80
+    },
+    {
+        img: '../../images/air-conditioning-portable/gree.jpg',
+        title: 'Gree Portable Air Conditioner',
+        description: 'By Gree',
+        price: '$319.990',
+        discount: '-10%',
+        originalPrice: '$355.990',
+        rating: 4.5,
+        reviews: 90
+    },
+    {
+        img: '../../images/air-conditioning-portable/kendal.jpg',
+        title: 'Kendal Portable Air Conditioner',
+        description: 'By Kendal',
+        price: '$289.990',
+        discount: '-20%',
+        originalPrice: '$369.990',
+        rating: 4.3,
+        reviews: 70
+    },
+    {
+        img: '../../images/air-conditioning-portable/midea.jpg',
+        title: 'Midea Portable Air Conditioner',
+        description: 'By Midea',
+        price: '$339.990',
+        discount: '-12%',
+        originalPrice: '$385.990',
+        rating: 4.7,
+        reviews: 100
+    },
+    {
+        img: '../../images/air-conditioning-portable/soler.jpg',
+        title: 'Soler & Palau Portable Air Conditioner',
+        description: 'By Soler & Palau',
+        price: '$299.990',
+        discount: '-15%',
+        originalPrice: '$349.990',
+        rating: 4.1,
+        reviews: 65
+    },
+    {
+        img: '../../images/air-conditioning-portable/thorben.jpg',
+        title: 'Thorben Portable Air Conditioner',
+        description: 'By Thorben',
+        price: '$349.990',
+        discount: '-10%',
+        originalPrice: '$389.990',
+        rating: 4.6,
+        reviews: 85
     }
 ];
 
 
+const coffeeMakersArray = [
+    {
+        img: '../../images/coffee-makers/delonghi.jpg',
+        title: 'DeLonghi Coffee Maker',
+        description: 'By DeLonghii',
+        price: '$129.990',
+        discount: '-15%',
+        originalPrice: '$152.990',
+        rating: 4.5,
+        reviews: 80
+    },
+    {
+        img: '../../images/coffee-makers/krups.jpg',
+        title: 'Krups Coffee Maker',
+        description: 'By Krups',
+        price: '$149.990',
+        discount: '-10%',
+        originalPrice: '$166.990',
+        rating: 4.7,
+        reviews: 90
+    },
+    {
+        img: '../../images/coffee-makers/nescafe.jpg',
+        title: 'Nescafé Coffee Maker',
+        description: 'By Nescafé',
+        price: '$109.990',
+        discount: '-20%',
+        originalPrice: '$137.990',
+        rating: 4.3,
+        reviews: 70
+    },
+    {
+        img: '../../images/coffee-makers/oster.jpg',
+        title: 'Oster Coffee Maker',
+        description: 'By Oster',
+        price: '$99.990',
+        discount: '-12%',
+        originalPrice: '$113.990',
+        rating: 4.6,
+        reviews: 100
+    },
+    {
+        img: '../../images/coffee-makers/phillips.jpg',
+        title: 'Phillips Coffee Maker',
+        description: 'By Phillips',
+        price: '$139.990',
+        discount: '-15%',
+        originalPrice: '$164.990',
+        rating: 4.2,
+        reviews: 85
+    },
+    {
+        img: '../../images/coffee-makers/wurden.jpg',
+        title: 'Wurden Coffee Maker',
+        description: 'By Wurden',
+        price: '$119.990',
+        discount: '-10%',
+        originalPrice: '$133.990',
+        rating: 4.4,
+        reviews: 75
+    }
+];
 
 // Function to load initial users into localStorage
 function loadInitialUsers() {
@@ -306,9 +504,14 @@ document.querySelector('#loginModal .close').addEventListener('click', function(
     }
 });
 
-// Function to handle password recovery
+
 function recoverPass() {
     const email = document.getElementById("email-recover").value;
+
+    if(email === ''){
+        showToast("Por favor, introduce una dirección de correo.", "bg-danger");
+        return;
+    }
 
     if (!validateEmail(email)) {
         showToast("Por favor, introduce una dirección de correo electrónico válida.", "bg-danger");
@@ -317,7 +520,7 @@ function recoverPass() {
     }
 }
 
-// Load initial users and check login status on page load
+
 document.addEventListener('DOMContentLoaded', () => {
     loadInitialUsers();
     checkLoginStatus();
@@ -400,11 +603,112 @@ function generateCellPhonesHTML(product) {
     `;
 }
 
+function generateNotebooksHTML(product) {
+    const stars = Array.from({ length: 5 }, (_, i) => {
+        const starClass = i < product.rating ? 'fas fa-star text-warning' : 'far fa-star text-warning';
+        return `<i class="${starClass}"></i>`;
+    }).join('');
+
+    return `
+        <div class="col-md-4">
+            <div class="card mb-4 product-card">
+                <img src="${product.img}" class="card-img-top" alt="${product.title}">
+                <div class="card-body">
+                    <span class="badge badge-success">Llega hoy</span>
+                    <h5 class="card-title">${product.title}</h5>
+                    <p class="card-text">${product.description}</p>
+                    <p class="card-price">${product.price} <span class="badge badge-danger">${product.discount}</span></p>
+                    <p class="card-text"><del>${product.originalPrice}</del></p>
+                    <div class="rating">
+                        ${stars} (${product.reviews})
+                    </div>
+                    <a href="#" class="btn btn-primary btn-block">Agregar al Carrito</a>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function generateAirConditioningHTML(product) {
+    const stars = Array.from({ length: 5 }, (_, i) => {
+        const starClass = i < product.rating ? 'fas fa-star text-warning' : 'far fa-star text-warning';
+        return `<i class="${starClass}"></i>`;
+    }).join('');
+
+    return `
+        <div class="col-md-4">
+            <div class="card mb-4 product-card">
+                <img src="${product.img}" class="card-img-top" alt="${product.title}">
+                <div class="card-body">
+                    <span class="badge badge-success">Llega hoy</span>
+                    <h5 class="card-title">${product.title}</h5>
+                    <p class="card-text">${product.description}</p>
+                    <p class="card-price">${product.price} <span class="badge badge-danger">${product.discount}</span></p>
+                    <p class="card-text"><del>${product.originalPrice}</del></p>
+                    <div class="rating">
+                        ${stars} (${product.reviews})
+                    </div>
+                    <a href="#" class="btn btn-primary btn-block">Agregar al Carrito</a>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+
+function generateCoffeeMakersHTML(product) {
+    const stars = Array.from({ length: 5 }, (_, i) => {
+        const starClass = i < product.rating ? 'fas fa-star text-warning' : 'far fa-star text-warning';
+        return `<i class="${starClass}"></i>`;
+    }).join('');
+
+    return `
+        <div class="col-md-4">
+            <div class="card mb-4 product-card">
+                <img src="${product.img}" class="card-img-top" alt="${product.title}">
+                <div class="card-body">
+                    <span class="badge badge-success">Llega hoy</span>
+                    <h5 class="card-title">${product.title}</h5>
+                    <p class="card-text">${product.description}</p>
+                    <p class="card-price">${product.price} <span class="badge badge-danger">${product.discount}</span></p>
+                    <p class="card-text"><del>${product.originalPrice}</del></p>
+                    <div class="rating">
+                        ${stars} (${product.reviews})
+                    </div>
+                    <a href="#" class="btn btn-primary btn-block">Agregar al Carrito</a>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function loadNotebooks() {
+    const productList = document.getElementById('notebooks-list');
+    const productHTML = notebooksArray.map(generateNotebooksHTML).join('');
+    productList.innerHTML = productHTML;
+}
+
 function loadCellPhones() {
     const productList = document.getElementById('cellphones-list');
     const productHTML = cellPhonesArray.map(generateCellPhonesHTML).join('');
     productList.innerHTML = productHTML;
 }
 
+function loadAirConditioning() {
+    const productList = document.getElementById('air-conditioning-list');
+    const productHTML = airConditioningArray.map(generateAirConditioningHTML).join('');
+    productList.innerHTML = productHTML;
+}
+
+
+function loadCoffeeMakers() {
+    const productList = document.getElementById('coffee-makers-list');
+    const productHTML = coffeeMakersArray.map(generateCoffeeMakersHTML).join('');
+    productList.innerHTML = productHTML;
+}
+
 document.addEventListener('DOMContentLoaded', loadProducts);
 document.addEventListener('DOMContentLoaded', loadCellPhones);
+document.addEventListener('DOMContentLoaded', loadNotebooks);
+document.addEventListener('DOMContentLoaded', loadAirConditioning);
+document.addEventListener('DOMContentLoaded', loadCoffeeMakers);
