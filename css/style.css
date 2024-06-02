@@ -331,6 +331,9 @@ ul.list-unstyled li i {
 .admin-section.active {
     display: block;
 }
+
+
+
 .cart-item {
     border-bottom: 1px solid #eaeaea;
     padding: 15px 0;
@@ -377,4 +380,3 @@ ul.list-unstyled li i {
 .summary .btn {
     width: 100%;
 }
-
