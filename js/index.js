@@ -164,7 +164,7 @@ const notebooksArray = [
 
 const cellPhonesArray = [
     {
-        img: '../../huawei.jpg',
+        img: '../../images/huawei.jpg',
         title: 'Huawei P30 Pro',
         description: 'Por Huawei',
         price: '$799.990',
